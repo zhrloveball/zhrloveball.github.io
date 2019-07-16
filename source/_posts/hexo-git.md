@@ -12,6 +12,10 @@ categories:
 
 <!--more-->
 
+### <font color = "#159957">20190717更新，备份网站源码至GitHub</font>
+
+在github上新建一个分支，每次发布前将源代码提交到该分支，再发布网站，参考：[使用hexo，如果换了电脑怎么更新博客？ - CrazyMilk的回答 - 知乎](https://www.zhihu.com/question/21193762/answer/79109280)
+
 
 ### <font color = "#159957">20181223更新，Mac下报错 xcrun: error: invalid active developer path</font>
 
@@ -35,10 +39,10 @@ git -f push origin master
 ```
 
 若push速度很慢，进行如下操作：
-- 访问ipaddress网站 https://www.ipaddress.com/
+- 访问ipaddress网站 https://www.ipaddress.com/，或者 http://ip.tool.chinaz.com/
 - 查询github.global.ssl.fastly.net和github.com的ip地址
 - 通过sudo vim命令 修改/etc/hosts文件(Mac系统)，将github.com的ip映射添加到hosts中
-- 重启电脑，重新push
+- 更新DNS缓存 ``sudo dscacheutil -flushcache``，重新push
 
 ### 准备工作
 
