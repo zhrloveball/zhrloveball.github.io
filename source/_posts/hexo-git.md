@@ -16,6 +16,8 @@ categories:
 
 在github上新建一个分支，每次发布前将源代码提交到该分支，再发布网站，参考：[使用hexo，如果换了电脑怎么更新博客？ - CrazyMilk的回答 - 知乎](https://www.zhihu.com/question/21193762/answer/79109280)
 
+ 由于主题文件夹``hexo-theme-next``是从github clone的，属于子模块，因此无法提交。我们需另外备份主题的 config.yml 文件，如果自定义部分比较复杂，就需要 fork 一份。参考 https://github.com/iissnan/hexo-theme-next/issues/328
+
 
 ### <font color = "#159957">20181223更新，Mac下报错 xcrun: error: invalid active developer path</font>
 
