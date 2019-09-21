@@ -3,7 +3,7 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: 码农小左
+title: Bran's Blog
 subtitle: 行到水穷处，坐看云起时
 description: 
 author: Bran Zuo
@@ -78,5 +78,6 @@ theme: hexo-theme-next
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: git@github.com:zhrloveball/zhrloveball.github.io.git
+  # repo: git@github.com:zhrloveball/zhrloveball.github.io.git
+  repo: https://github.com/zhrloveball/zhrloveball.github.io.git
   branch: master
