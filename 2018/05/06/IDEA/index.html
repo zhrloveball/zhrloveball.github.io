@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/myicon_180.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/myicon_32.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/myicon_16.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/myicon_512.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="IDEA," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="工欲善其事必先利其器，新公司的开发工具是IDEA，熟悉一下IDEA神器的使用。">
+<meta name="keywords" content="IDEA">
+<meta property="og:type" content="article">
+<meta property="og:title" content="IntelliJ IDEA 使用技巧">
+<meta property="og:url" content="http://yoursite.com/2018/05/06/IDEA/index.html">
+<meta property="og:site_name" content="Bran&#39;s Blog">
+<meta property="og:description" content="工欲善其事必先利其器，新公司的开发工具是IDEA，熟悉一下IDEA神器的使用。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/images/article_pictures/idea/8e466a8e-968b-4658-8a8f-ff86c62f9838.png">
+<meta property="og:image" content="http://yoursite.com/images/article_pictures/idea/6df97286-551d-442f-847e-7169ae2f8fb0.png">
+<meta property="og:image" content="http://yoursite.com/images/article_pictures/idea/cb4113e8-29c8-4f9b-8d42-f5fcc0483db9.png">
+<meta property="og:image" content="http://yoursite.com/images/article_pictures/idea/183d3df3-d964-4264-b934-1893f94a1a58.png">
+<meta property="og:image" content="http://yoursite.com/images/article_pictures/idea/0bae90a4-bda5-4f0b-b5cc-f9caa7022101.png">
+<meta property="og:image" content="http://yoursite.com/images/article_pictures/idea/08556d29-8e9c-43d7-9128-dd43199a1972.png">
+<meta property="og:image" content="http://yoursite.com/images/article_pictures/idea/98c84341-e8f4-4cd5-ae35-aa8aa6f3dfd8.png">
+<meta property="og:image" content="http://yoursite.com/images/article_pictures/idea/ad411891-aacc-4468-80fe-54ff9702cb41.png">
+<meta property="og:image" content="http://yoursite.com/images/article_pictures/idea/082d4916-c33c-4f23-8506-fb42dad7525e.png">
+<meta property="og:image" content="http://yoursite.com/images/article_pictures/idea/6e7a8cde-bfdf-4df4-8c65-9b3a34e9d06e.png">
+<meta property="og:image" content="http://yoursite.com/images/article_pictures/idea/a9e36762-af8b-4005-8225-fee3f783bbb7.png">
+<meta property="og:image" content="http://yoursite.com/images/article_pictures/idea/b2d12b54-a5b4-4c63-830b-99efc8f17de4.png">
+<meta property="og:image" content="http://yoursite.com/images/article_pictures/idea/c94450c5-617c-440b-9b1f-139657e0a69d.png">
+<meta property="og:image" content="http://yoursite.com/images/article_pictures/idea/03a30682-8140-45eb-98ab-ce403611f5f1.png">
+<meta property="og:image" content="http://yoursite.com/images/article_pictures/idea/a0e8a3f4-c5cc-4c03-a0e1-8f4d5b212609.png">
+<meta property="og:image" content="http://yoursite.com/images/article_pictures/idea/7ca9dd57-63a3-4fde-b913-06c2dcc7e398.png">
+<meta property="og:image" content="http://yoursite.com/images/article_pictures/idea/3bb6b469-4d8a-4862-ae12-c9c24e223aab.png">
+<meta property="og:image" content="http://yoursite.com/images/article_pictures/idea/b2b146e4-4475-4a21-b8e9-795544439773.jpg">
+<meta property="og:image" content="http://yoursite.com/images/article_pictures/idea/1b7ca222-7314-4db6-8471-ebb5e8201df1.png">
+<meta property="og:image" content="http://yoursite.com/images/article_pictures/idea/8d1e5cd0-30a6-4329-94e5-aad1767781ab.jpg">
+<meta property="og:image" content="http://yoursite.com/images/article_pictures/idea/9e65ff98-c051-4d3f-8a5b-8deec59c6b6e.jpg">
+<meta property="og:image" content="http://yoursite.com/images/article_pictures/idea/e0618bca-8ecf-4686-ad32-490e5a3fbdf8.png">
+<meta property="og:image" content="http://yoursite.com/images/article_pictures/idea/02751ce7-a027-4784-8b4e-d30dc974cff9.jpg">
+<meta property="og:image" content="http://yoursite.com/images/article_pictures/idea/9a4344c0-f329-4784-bd93-0dbb24f05fda.jpg">
+<meta property="og:image" content="http://yoursite.com/images/article_pictures/idea/9b8702ac-efc8-4c4a-a534-474aa7efe703.jpg">
+<meta property="og:image" content="http://yoursite.com/images/article_pictures/idea/4919f699-b7f6-48fe-b954-1c50e3fc9fe8.jpg">
+<meta property="og:image" content="http://yoursite.com/images/article_pictures/idea/92ce9932-e318-4408-8841-6516dae0776e.jpg">
+<meta property="og:updated_time" content="2019-09-21T02:26:42.845Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="IntelliJ IDEA 使用技巧">
+<meta name="twitter:description" content="工欲善其事必先利其器，新公司的开发工具是IDEA，熟悉一下IDEA神器的使用。">
+<meta name="twitter:image" content="http://yoursite.com/images/article_pictures/idea/8e466a8e-968b-4658-8a8f-ff86c62f9838.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/05/06/IDEA/"/>
+
+
+
+
+
+  <title>IntelliJ IDEA 使用技巧 | Bran's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Bran's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">行到水穷处，坐看云起时</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/06/IDEA/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bran Zuo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bran's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">IntelliJ IDEA 使用技巧</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-06T21:24:29+08:00">
+                2018-05-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>工欲善其事必先利其器，新公司的开发工具是IDEA，熟悉一下IDEA神器的使用。</p>
+<a id="more"></a>
+<h1 id="IDEA界面"><a href="#IDEA界面" class="headerlink" title="IDEA界面"></a><font color="#159957">IDEA界面</font></h1><ul>
+<li><p><code>Alt + 数字键</code> 切换IDEA界面窗口，重复按键隐藏窗口，ESC键返回编码区<br>例如通过Alt + 1 打开/关闭 Project 窗口：<br><img src="/images/article_pictures/idea/8e466a8e-968b-4658-8a8f-ff86c62f9838.png" alt=""></p>
+</li>
+<li><p><code>Ctrl + Shift + A</code> 搜索Action对应快捷键：<br><img src="/images/article_pictures/idea/6df97286-551d-442f-847e-7169ae2f8fb0.png" alt=""></p>
+</li>
+</ul>
+<h1 id="高效定位代码"><a href="#高效定位代码" class="headerlink" title="高效定位代码"></a><font color="#159957">高效定位代码</font></h1><h2 id="跳转"><a href="#跳转" class="headerlink" title="跳转"></a><font color="#159957">跳转</font></h2><h3 id="项目跳转"><a href="#项目跳转" class="headerlink" title="项目跳转"></a><font color="#159957">项目跳转</font></h3><ul>
+<li><code>Ctrl + Alt + [</code>  和 <code>Ctrl + Alt + ]</code> 切换项目</li>
+</ul>
+<h3 id="文件跳转"><a href="#文件跳转" class="headerlink" title="文件跳转"></a><font color="#159957">文件跳转</font></h3><ul>
+<li><code>Ctrl + E</code> 最近浏览文件</li>
+<li><code>Ctrl + Shift + E</code> 最近修改文件</li>
+</ul>
+<h3 id="修改位置跳转"><a href="#修改位置跳转" class="headerlink" title="修改位置跳转"></a><font color="#159957">修改位置跳转</font></h3><ul>
+<li><code>Ctrl + Shift + Backspace</code> 上次修改位置</li>
+</ul>
+<h3 id="浏览位置跳转"><a href="#浏览位置跳转" class="headerlink" title="浏览位置跳转"></a><font color="#159957">浏览位置跳转</font></h3><ul>
+<li><code>Ctrl + Alt + 左箭头</code> 和 <code>Ctrl + Alt + 右箭头</code> 切换代码浏览位置</li>
+</ul>
+<h3 id="书签位置跳转"><a href="#书签位置跳转" class="headerlink" title="书签位置跳转"></a><font color="#159957">书签位置跳转</font></h3><ul>
+<li><code>Ctrl + F11</code> 设置标签</li>
+</ul>
+<h3 id="收藏位置"><a href="#收藏位置" class="headerlink" title="收藏位置"></a><font color="#159957">收藏位置</font></h3><ul>
+<li><code>Alt + Shift + F</code> 收藏方法或类(光标在方法名上时收藏方法)，<code>Alt + 2</code>查看收藏</li>
+</ul>
+<h2 id="搜索"><a href="#搜索" class="headerlink" title="搜索"></a><font color="#159957">搜索</font></h2><ul>
+<li><code>Ctrl + Shift + F</code> 全局搜索文件内容</li>
+<li><code>Shift + Shift</code> 搜索类、文件、函数名</li>
+<li><code>Ctrl + N</code> 搜索类，在搜索界面再按一次可搜索不在项目中的类<br><img src="/images/article_pictures/idea/cb4113e8-29c8-4f9b-8d42-f5fcc0483db9.png" alt=""></li>
+<li><code>Ctrl + Shift + N</code> 搜索文件</li>
+<li><code>Ctrl + Alt + Shift + N</code> 搜索函数名</li>
+</ul>
+<h1 id="代码小助手"><a href="#代码小助手" class="headerlink" title="代码小助手"></a><font color="#159957">代码小助手</font></h1><h2 id="列操作，批量编辑"><a href="#列操作，批量编辑" class="headerlink" title="列操作，批量编辑"></a><font color="#159957">列操作，批量编辑</font></h2><ul>
+<li><code>Ctrl + Shift + Alt + J</code> 批量选中</li>
+<li><code>Ctrl + Alt + L</code> 批量格式化代码<ul>
+<li><code>Ctrl + W</code> 选中这个单词</li>
+<li><code>Ctrl + Shift + U</code> 大小写转换<br>例如批量修改下图枚举类：<br><img src="/images/article_pictures/idea/183d3df3-d964-4264-b934-1893f94a1a58.png" alt=""><br>批量修改后：<br><img src="/images/article_pictures/idea/0bae90a4-bda5-4f0b-b5cc-f9caa7022101.png" alt=""></li>
+</ul>
+</li>
+</ul>
+<h2 id="live-templates-自定义缩写模板"><a href="#live-templates-自定义缩写模板" class="headerlink" title="live templates 自定义缩写模板"></a><font color="#159957">live templates 自定义缩写模板</font></h2><ul>
+<li><code>Ctrl + Shift + A</code> 找到模板设置<br><img src="/images/article_pictures/idea/08556d29-8e9c-43d7-9128-dd43199a1972.png" alt=""></li>
+<li>编写模板，使用时输入psc再回车，光标会停留在VAR1处，输入完再回车光标会停在VAR2处，再回车光标停在END处<br><img src="/images/article_pictures/idea/98c84341-e8f4-4cd5-ae35-aa8aa6f3dfd8.png" alt=""></li>
+</ul>
+<h2 id="Postfix-Completion"><a href="#Postfix-Completion" class="headerlink" title="Postfix Completion"></a><font color="#159957">Postfix Completion</font></h2><p>常用Postfix：</p>
+<ul>
+<li><code>foo.fori</code> 快速生成for循环<br><img src="/images/article_pictures/idea/ad411891-aacc-4468-80fe-54ff9702cb41.png" alt=""></li>
+<li><code>foo.return</code> 快速生成return语句 <code>return foo;</code></li>
+<li><code>foo.sout</code> 快速生成打印语句 <code>System.out.println(foo)</code></li>
+<li><code>foo.field</code> 快速生成成员变量<br><img src="/images/article_pictures/idea/082d4916-c33c-4f23-8506-fb42dad7525e.png" alt=""></li>
+<li><code>foo.nn</code> 快速判断非空<br><img src="/images/article_pictures/idea/6e7a8cde-bfdf-4df4-8c65-9b3a34e9d06e.png" alt=""></li>
+</ul>
+<h2 id="show-intention-Actions-Alter-Enter"><a href="#show-intention-Actions-Alter-Enter" class="headerlink" title="show intention Actions(Alter + Enter)"></a><font color="#159957">show intention Actions(Alter + Enter)</font></h2><p>常用操作：</p>
+<ul>
+<li>自动创建函数<br><img src="/images/article_pictures/idea/a9e36762-af8b-4005-8225-fee3f783bbb7.png" alt=""></li>
+<li>替换for循环为foreach循环<br><img src="/images/article_pictures/idea/b2d12b54-a5b4-4c63-830b-99efc8f17de4.png" alt=""></li>
+<li>字符串fomart()或StringBuilder.append()代替字符串拼接<br><img src="/images/article_pictures/idea/c94450c5-617c-440b-9b1f-139657e0a69d.png" alt=""></li>
+<li>快速实现接口<br><img src="/images/article_pictures/idea/03a30682-8140-45eb-98ab-ce403611f5f1.png" alt=""></li>
+<li>导入依赖包</li>
+<li>单词拼写<br><img src="/images/article_pictures/idea/a0e8a3f4-c5cc-4c03-a0e1-8f4d5b212609.png" alt=""></li>
+</ul>
+<h1 id="编写高质量代码"><a href="#编写高质量代码" class="headerlink" title="编写高质量代码"></a><font color="#159957">编写高质量代码</font></h1><h2 id="重构"><a href="#重构" class="headerlink" title="重构"></a><font color="#159957">重构</font></h2><ul>
+<li><code>Shift + F6</code> 批量修改变量名</li>
+</ul>
+<h2 id="抽取"><a href="#抽取" class="headerlink" title="抽取"></a><font color="#159957">抽取</font></h2><p><img src="/images/article_pictures/idea/7ca9dd57-63a3-4fde-b913-06c2dcc7e398.png" alt=""></p>
+<ul>
+<li><code>Ctrl + Alt + V</code> 抽取变量<br><img src="/images/article_pictures/idea/3bb6b469-4d8a-4862-ae12-c9c24e223aab.png" alt=""></li>
+<li><code>Ctrl + Alt + C</code> 抽取变量为静态变量</li>
+<li><code>Ctrl + Alt + F</code> 抽取变量为成员变量</li>
+<li><code>Ctrl + Alt + P</code> 抽取变量为方法参数</li>
+<li><code>Ctrl + Alt + M</code> 抽取方法</li>
+</ul>
+<h1 id="寻找代码修改轨迹"><a href="#寻找代码修改轨迹" class="headerlink" title="寻找代码修改轨迹"></a><font color="#159957">寻找代码修改轨迹</font></h1><h2 id="在git-svn集成下"><a href="#在git-svn集成下" class="headerlink" title="在git/svn集成下"></a><font color="#159957">在git/svn集成下</font></h2><ul>
+<li>Annotate，找到代码作者<br><img src="/images/article_pictures/idea/b2b146e4-4475-4a21-b8e9-795544439773.jpg" alt=""></li>
+<li><code>Ctrl + Alt + Shift + 上下箭头</code> 遍历修改记录</li>
+<li><code>Ctrl + Alt + Z</code> Revert,还原</li>
+</ul>
+<h2 id="本地情况-Local-History"><a href="#本地情况-Local-History" class="headerlink" title="本地情况 Local History"></a><font color="#159957">本地情况 Local History</font></h2><ul>
+<li>Show History(查看本地修改记录) &amp; Put Label(相当于给自己的本地修改做一份存档)<br><img src="/images/article_pictures/idea/1b7ca222-7314-4db6-8471-ebb5e8201df1.png" alt=""></li>
+</ul>
+<h1 id="关联"><a href="#关联" class="headerlink" title="关联"></a><font color="#159957">关联</font></h1><h2 id="关联Spring"><a href="#关联Spring" class="headerlink" title="关联Spring"></a><font color="#159957">关联Spring</font></h2><ul>
+<li>操作：<code>Project Structure</code>- <code>Facets</code> - <code>Add</code> - <code>Spring</code> - <code>选择Spring配置文件</code><br><img src="/images/article_pictures/idea/8d1e5cd0-30a6-4329-94e5-aad1767781ab.jpg" alt=""><br><img src="/images/article_pictures/idea/9e65ff98-c051-4d3f-8a5b-8deec59c6b6e.jpg" alt=""></li>
+</ul>
+<h2 id="关联数据库"><a href="#关联数据库" class="headerlink" title="关联数据库"></a><font color="#159957">关联数据库</font></h2><ul>
+<li>关联设置<br><img src="/images/article_pictures/idea/e0618bca-8ecf-4686-ad32-490e5a3fbdf8.png" alt=""></li>
+<li>关联数据库后使用时会提示关联数据库中的表名和字段：<br><img src="/images/article_pictures/idea/02751ce7-a027-4784-8b4e-d30dc974cff9.jpg" alt=""></li>
+<li>在关联数据中 <code>Shift + F6</code>可批量重命名表名和字段：<br><img src="/images/article_pictures/idea/9a4344c0-f329-4784-bd93-0dbb24f05fda.jpg" alt=""></li>
+<li>批量修改时可以通过<code>Exclude</code>排除不需要修改的地方：<br><img src="/images/article_pictures/idea/9b8702ac-efc8-4c4a-a534-474aa7efe703.jpg" alt=""></li>
+</ul>
+<h1 id="调试"><a href="#调试" class="headerlink" title="调试"></a><font color="#159957">调试</font></h1><h2 id="断点调试"><a href="#断点调试" class="headerlink" title="断点调试"></a><font color="#159957">断点调试</font></h2><ul>
+<li><code>Ctrl + F8</code> 添加/取消 断点</li>
+<li><code>Shift + F9</code> 开始调试</li>
+<li><code>F8</code> Debug模式下，单步运行</li>
+<li><code>F9</code> Debug模式下，Resume，跳到下一个断点</li>
+<li><code>Ctrl + Shift + F8</code> 查看所有断点</li>
+<li><code>Mute Breakpoints</code> 禁用所有断点<br><img src="/images/article_pictures/idea/4919f699-b7f6-48fe-b954-1c50e3fc9fe8.jpg" alt=""></li>
+<li><code>Ctrl + Shift + F8</code> 在需要用条件断点的断点处，添加条件断点<br><img src="/images/article_pictures/idea/92ce9932-e318-4408-8841-6516dae0776e.jpg" alt=""></li>
+<li><code>Alt + F8</code> 查看表达式值</li>
+<li><code>Alt + F9</code> 运行到指定行（光标所在行）</li>
+<li><code>F2</code> Debug模式下setValue</li>
+</ul>
+<h2 id="单元测试"><a href="#单元测试" class="headerlink" title="单元测试"></a><font color="#159957">单元测试</font></h2><ul>
+<li><code>Ctrl + Shift + F9</code> 运行当前上下文，单元测试中常用</li>
+<li><code>Alt + Shift + F9</code> 在当前可运行列表中选择一个运行</li>
+</ul>
+<h1 id="其他"><a href="#其他" class="headerlink" title="其他"></a><font color="#159957">其他</font></h1><h2 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a><font color="#159957">文件操作</font></h2><ul>
+<li><code>Ctrl + Alt + Insert</code> 当前目录下新建文件</li>
+<li><code>F5</code> 复制文件</li>
+<li><code>F6</code> 移动文件 </li>
+</ul>
+<h2 id="文本操作"><a href="#文本操作" class="headerlink" title="文本操作"></a><font color="#159957">文本操作</font></h2><ul>
+<li>选中文件名，<code>Ctrl + C</code> 复制文件名</li>
+<li>选中文件名，<code>Ctrl + Shift + C</code> 复制文件路径名</li>
+</ul>
+<h2 id="结构图"><a href="#结构图" class="headerlink" title="结构图"></a><font color="#159957">结构图</font></h2><ul>
+<li><code>Ctrl + F12</code> 查看类结构，包括方法、变量等</li>
+<li><code>Ctrl + Alt + U</code> 或者 <code>Ctrl + H</code> 查看类的继承关系</li>
+<li><code>Ctrl + Alt + H</code> 查看调用层次</li>
+</ul>
+<h1 id="课程地址"><a href="#课程地址" class="headerlink" title="课程地址"></a><font color="#159957">课程地址</font></h1><blockquote>
+<p><a href="https://www.imooc.com/learn/924" target="_blank" rel="noopener">https://www.imooc.com/learn/924</a></p>
+</blockquote>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/IDEA/" rel="tag"># IDEA</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/04/25/找房-找工作/" rel="next" title="魔都两年 找房 找工作">
+                <i class="fa fa-chevron-left"></i> 魔都两年 找房 找工作
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/07/23/HK-Project/" rel="prev" title="新项目三个月小结">
+                新项目三个月小结 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zMjk5NS85NTU3"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Bran Zuo</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#IDEA界面"><span class="nav-number">1.</span> <span class="nav-text">IDEA界面</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#高效定位代码"><span class="nav-number">2.</span> <span class="nav-text">高效定位代码</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#跳转"><span class="nav-number">2.1.</span> <span class="nav-text">跳转</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#项目跳转"><span class="nav-number">2.1.1.</span> <span class="nav-text">项目跳转</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件跳转"><span class="nav-number">2.1.2.</span> <span class="nav-text">文件跳转</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改位置跳转"><span class="nav-number">2.1.3.</span> <span class="nav-text">修改位置跳转</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#浏览位置跳转"><span class="nav-number">2.1.4.</span> <span class="nav-text">浏览位置跳转</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#书签位置跳转"><span class="nav-number">2.1.5.</span> <span class="nav-text">书签位置跳转</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#收藏位置"><span class="nav-number">2.1.6.</span> <span class="nav-text">收藏位置</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#搜索"><span class="nav-number">2.2.</span> <span class="nav-text">搜索</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#代码小助手"><span class="nav-number">3.</span> <span class="nav-text">代码小助手</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#列操作，批量编辑"><span class="nav-number">3.1.</span> <span class="nav-text">列操作，批量编辑</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#live-templates-自定义缩写模板"><span class="nav-number">3.2.</span> <span class="nav-text">live templates 自定义缩写模板</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Postfix-Completion"><span class="nav-number">3.3.</span> <span class="nav-text">Postfix Completion</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#show-intention-Actions-Alter-Enter"><span class="nav-number">3.4.</span> <span class="nav-text">show intention Actions(Alter + Enter)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#编写高质量代码"><span class="nav-number">4.</span> <span class="nav-text">编写高质量代码</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#重构"><span class="nav-number">4.1.</span> <span class="nav-text">重构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#抽取"><span class="nav-number">4.2.</span> <span class="nav-text">抽取</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#寻找代码修改轨迹"><span class="nav-number">5.</span> <span class="nav-text">寻找代码修改轨迹</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#在git-svn集成下"><span class="nav-number">5.1.</span> <span class="nav-text">在git/svn集成下</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#本地情况-Local-History"><span class="nav-number">5.2.</span> <span class="nav-text">本地情况 Local History</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#关联"><span class="nav-number">6.</span> <span class="nav-text">关联</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#关联Spring"><span class="nav-number">6.1.</span> <span class="nav-text">关联Spring</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关联数据库"><span class="nav-number">6.2.</span> <span class="nav-text">关联数据库</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#调试"><span class="nav-number">7.</span> <span class="nav-text">调试</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#断点调试"><span class="nav-number">7.1.</span> <span class="nav-text">断点调试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#单元测试"><span class="nav-number">7.2.</span> <span class="nav-text">单元测试</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#其他"><span class="nav-number">8.</span> <span class="nav-text">其他</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#文件操作"><span class="nav-number">8.1.</span> <span class="nav-text">文件操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文本操作"><span class="nav-number">8.2.</span> <span class="nav-text">文本操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结构图"><span class="nav-number">8.3.</span> <span class="nav-text">结构图</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#课程地址"><span class="nav-number">9.</span> <span class="nav-text">课程地址</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Bran Zuo</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

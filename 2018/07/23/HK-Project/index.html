@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/myicon_180.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/myicon_32.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/myicon_16.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/myicon_512.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Java 8,Spring,Mock,Guava,Lombok,FastJson,Linux," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="明天要转正了，虽然这三个月一直在苦逼的加班，但是学到了不少新知识，趁最近没那么忙了总结一下。">
+<meta name="keywords" content="Java 8,Spring,Mock,Guava,Lombok,FastJson,Linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="新项目三个月小结">
+<meta property="og:url" content="http://yoursite.com/2018/07/23/HK-Project/index.html">
+<meta property="og:site_name" content="Bran&#39;s Blog">
+<meta property="og:description" content="明天要转正了，虽然这三个月一直在苦逼的加班，但是学到了不少新知识，趁最近没那么忙了总结一下。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/images/article_pictures/idea_live_template.jpeg">
+<meta property="og:updated_time" content="2019-09-21T02:26:42.845Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="新项目三个月小结">
+<meta name="twitter:description" content="明天要转正了，虽然这三个月一直在苦逼的加班，但是学到了不少新知识，趁最近没那么忙了总结一下。">
+<meta name="twitter:image" content="http://yoursite.com/images/article_pictures/idea_live_template.jpeg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/07/23/HK-Project/"/>
+
+
+
+
+
+  <title>新项目三个月小结 | Bran's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Bran's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">行到水穷处，坐看云起时</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/23/HK-Project/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bran Zuo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bran's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">新项目三个月小结</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-23T21:12:02+08:00">
+                2018-07-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/项目总结/" itemprop="url" rel="index">
+                    <span itemprop="name">项目总结</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>明天要转正了，虽然这三个月一直在苦逼的加班，但是学到了不少新知识，趁最近没那么忙了总结一下。</p>
+<a id="more"></a>
+<h1 id="Java-8"><a href="#Java-8" class="headerlink" title="Java 8"></a><font color="#159957">Java 8</font></h1><p>新项目用的JDK 1.8，以前有粗略了解过Java 8，正真上手后不由得感慨：函数式编程真的好爽。</p>
+<h3 id="Stream"><a href="#Stream" class="headerlink" title="Stream"></a><font color="#159957">Stream</font></h3><p>通过stream()方法获取对象的数据集，通过一系列中间（Intermediate）方法，对数据集进行过滤、检索等再处理，最后通过最终（terminal）方法完成对数据集中元素的处理。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String SEPERATOR = <span class="string">","</span>;</span><br><span class="line"><span class="comment">//将多个字符串以逗号分隔拼接</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">buildMessage</span><span class="params">(String... args)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> Arrays.stream(args).collect(Collectors.joining(SEPERATOR));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Lamda"><a href="#Lamda" class="headerlink" title="Lamda"></a><font color="#159957">Lamda</font></h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">Student xiaoMing = Student.builder()</span><br><span class="line">        .name(<span class="string">"小明"</span>)</span><br><span class="line">        .no(<span class="number">1</span>)</span><br><span class="line">        .age(<span class="number">18</span>)</span><br><span class="line">        .sex(<span class="string">"男"</span>)</span><br><span class="line">        .build();</span><br><span class="line">Student xiaoHong = Student.builder()</span><br><span class="line">        .name(<span class="string">"小红"</span>)</span><br><span class="line">        .no(<span class="number">2</span>)</span><br><span class="line">        .age(<span class="number">19</span>)</span><br><span class="line">        .sex(<span class="string">"女"</span>)</span><br><span class="line">        .build();</span><br><span class="line">List&lt;Student&gt; studentList = Lists.newArrayList(xiaoMing, xiaoHong);</span><br><span class="line"><span class="comment">//选取</span></span><br><span class="line">List&lt;String&gt; nameList = studentList.stream().map(Student::getName).collect(Collectors.toList());</span><br><span class="line"><span class="comment">//过滤</span></span><br><span class="line">List&lt;Student&gt; boyStudents = studentList.stream()</span><br><span class="line">        .filter(student -&gt; student.getSex().equals(<span class="string">"男"</span>))</span><br><span class="line">        .collect(Collectors.toList());</span><br><span class="line"><span class="comment">//排序</span></span><br><span class="line">studentList.stream().sorted((x,y) -&gt; &#123;</span><br><span class="line">    <span class="keyword">if</span> (x.getAge() == y.getAge()) &#123;</span><br><span class="line">        <span class="keyword">return</span> x.getName().compareTo(y.getName());</span><br><span class="line">    &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> x.getAge() &gt; y.getAge() ? <span class="number">1</span> : -<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="CompletableFuture"><a href="#CompletableFuture" class="headerlink" title="CompletableFuture"></a><font color="#159957">CompletableFuture</font></h3><p>使用CompletableFuture进行异步操作。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StudentService</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Resource</span></span><br><span class="line">    <span class="keyword">private</span> AsyncStudentService asyncStudentService;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doHomeWork</span><span class="params">()</span> <span class="keyword">throws</span> ExecutionException, InterruptedException </span>&#123;</span><br><span class="line">        <span class="comment">//skip build Student</span></span><br><span class="line">        Future&lt;HomeWork&gt; xiaoMingWorkFuture = asyncStudentService.doHomeWork(xiaoMing);</span><br><span class="line">        Future&lt;HomeWork&gt; xiaoHongWorkFuture = asyncStudentService.doHomeWork(xiaoHong);</span><br><span class="line">        <span class="comment">//get the result</span></span><br><span class="line">        HomeWork xiaoMingWork = xiaoMingWorkFuture.get();</span><br><span class="line">        HomeWork xiaoHongWork = xiaoHongWorkFuture.get();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AsyncStudentService</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Async</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Future&lt;HomeWork&gt; <span class="title">doHomeWork</span><span class="params">(Student student)</span> </span>&#123;</span><br><span class="line">        HomeWork work = <span class="keyword">new</span> HomeWork();</span><br><span class="line">        <span class="comment">//student do homework</span></span><br><span class="line">        <span class="comment">//...</span></span><br><span class="line">        <span class="keyword">return</span> CompletableFuture.completedFuture(work);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>当要对一组List异步操作时，可以将List分组再操作:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; List&lt;List&lt;T&gt;&gt; splitList(List&lt;T&gt; list, <span class="keyword">int</span> len) &#123;</span><br><span class="line">    <span class="keyword">if</span> (CollectionUtils.isEmpty(list)) &#123;</span><br><span class="line">        <span class="keyword">return</span> Collections.emptyList();</span><br><span class="line">    &#125;</span><br><span class="line">    List&lt;List&lt;T&gt;&gt; result = Lists.newArrayList();</span><br><span class="line">    <span class="keyword">int</span> size = list.size();</span><br><span class="line">    <span class="keyword">int</span> count = (size + len - <span class="number">1</span>) / len;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; count; i++) &#123;</span><br><span class="line">        List&lt;T&gt; subList = list.subList(i * len, ((i + <span class="number">1</span>) * len &gt; size ? size : len * (i + <span class="number">1</span>)));</span><br><span class="line">        result.add(subList);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> List&lt;HomeWork&gt; <span class="title">doHomeWork</span><span class="params">(List&lt;HomeWork&gt; homeWorkList)</span> <span class="keyword">throws</span> ExecutionException, InterruptedException </span>&#123;</span><br><span class="line"></span><br><span class="line">    List&lt;List&lt;HomeWork&gt;&gt; workListList = splitList(homeWorkList, <span class="number">10</span>);</span><br><span class="line">    List&lt;Future&lt;HomeWork&gt;&gt; resultFuture = Lists.newArrayList();</span><br><span class="line">    workListList.forEach(workList -&gt;&#123;</span><br><span class="line">        resultFuture.add(asyncStudentService.doHomeWork(workList));</span><br><span class="line">    &#125;);</span><br><span class="line">    List&lt;HomeWork&gt; resultList = Lists.newArrayList();</span><br><span class="line">    <span class="keyword">for</span> (Future&lt;HomeWork&gt; homeWorkFuture : resultFuture) &#123;</span><br><span class="line">        resultList.add(homeWorkFuture.get());</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> resultList;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Optional"><a href="#Optional" class="headerlink" title="Optional"></a><font color="#159957">Optional</font></h3><p>Java 8提供的Optional类主要用来优雅的解决NPE问题(NullPointerException)。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Student student = <span class="keyword">new</span> Student();</span><br><span class="line"><span class="comment">//student有可能为空</span></span><br><span class="line">Optional&lt;Student&gt; optional = Optional.ofNullable(student);</span><br><span class="line">optional.map(s -&gt; s.getName())</span><br><span class="line">        .map(name -&gt; name.toUpperCase())</span><br><span class="line">        .orElse(<span class="keyword">null</span>);</span><br><span class="line">        <span class="comment">//.orElseThrow(() -&gt; new Exception());</span></span><br></pre></td></tr></table></figure>
+<p>如果不使用Optional，代码将会很冗余：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(student != <span class="keyword">null</span>) &#123;</span><br><span class="line">  String name = user.getName();</span><br><span class="line">  <span class="keyword">if</span>(name != <span class="keyword">null</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> name.toUpperCase();</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h1 id="Spring-定时任务"><a href="#Spring-定时任务" class="headerlink" title="Spring 定时任务"></a><font color="#159957">Spring 定时任务</font></h1><ol>
+<li>定义定时任务表及对应实体类，定义定时任务父类，定义子类重写process方法:</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JobEntity</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Integer id;</span><br><span class="line">    <span class="keyword">private</span> String jobServiceName;</span><br><span class="line">    <span class="keyword">private</span> Data jobTime;</span><br><span class="line">    <span class="keyword">private</span> Integer status;</span><br><span class="line">    <span class="keyword">private</span> Integer version;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TaskJobService</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">process</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>通过Spring自带的<code>@EnableScheduling</code>和<code>@Scheduled</code>定义定时任务</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="meta">@EnableScheduling</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ScheduleTaskJob</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Scheduled</span>(cron = <span class="string">"0 0/5 * * * *"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">queryJobList</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">//read from task_job</span></span><br><span class="line">        List&lt;TaskJobService&gt; taskJobList = Lists.newArrayList();</span><br><span class="line">        <span class="keyword">for</span> (TaskJobService job : taskJobList) &#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                <span class="comment">//从上下文中拿到jobName对应的Service并执行process方法</span></span><br><span class="line">                doProcess();</span><br><span class="line">            &#125;<span class="keyword">finally</span> &#123;</span><br><span class="line">                <span class="comment">//每次执行完job version加1，更新job状态为已完成</span></span><br><span class="line">                updateJob();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>从上下文中拿到jobName对应的Service并执行process方法</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JobService</span> <span class="keyword">extends</span> <span class="title">ApplicationObjectSupport</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doProcess</span><span class="params">(String jobServiceName)</span> </span>&#123;</span><br><span class="line">        ApplicationContext applicationContext = getApplicationContext();</span><br><span class="line">        TaskJobService job = (TaskJobService)applicationContext.getBean(jobServiceName);</span><br><span class="line">        job.process();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="Mock单元测试"><a href="#Mock单元测试" class="headerlink" title="Mock单元测试"></a><font color="#159957">Mock单元测试</font></h1><p>mock是模拟对象，用于模拟真实对象的行为。Powermock主要用于打桩。比如：方法A的参数需要传入实例B，方法A需要调用B的某个方法B.C()。方法C因为耗时长或者根本没有实现或者其他不方便在单元测试中实现等原因，需要伪造返回，此时Powermock即可派上用场。</p>
+<p>pom文件中引入:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.mockito&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;mockito-core&lt;/artifactId&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.powermock&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;powermock-module-junit4&lt;/artifactId&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.powermock&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;powermock-api-mockito2&lt;/artifactId&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+<p>编写Controller测试类：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RunWith</span>(SpringRunner.class)</span><br><span class="line"><span class="meta">@SpringBootTest</span></span><br><span class="line"><span class="meta">@AutoConfigureMockMvc</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DemoControllerTest</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> MockMvc mockMvc;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@MockBean</span></span><br><span class="line">    <span class="keyword">private</span> DemoService demoService;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@InjectMocks</span></span><br><span class="line">    <span class="keyword">private</span> DemoController demoController;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//初始化MockMvc</span></span><br><span class="line">    <span class="meta">@Before</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setUp</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        MockitoAnnotations.initMocks(<span class="keyword">this</span>);</span><br><span class="line">        <span class="keyword">this</span>.mockMvc = MockMvcBuilders.standaloneSetup(demoController).build();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">demoMethod</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="comment">//1. 组装入参</span></span><br><span class="line">        String requestBody = <span class="keyword">null</span>;</span><br><span class="line">        <span class="comment">//2. 打桩Service</span></span><br><span class="line">        String result = <span class="keyword">null</span>;</span><br><span class="line">        when(demoService.demoMethod(any(String.class))).thenReturn(result);</span><br><span class="line">        <span class="comment">//3. 测试接口,断言</span></span><br><span class="line">        <span class="keyword">this</span>.mockMvc</span><br><span class="line">                .perform(MockMvcRequestBuilders.post(<span class="string">"/test"</span>).contentType(MediaType.APPLICATION_JSON).content(requestBody))</span><br><span class="line">                .andDo(MockMvcResultHandlers.print())</span><br><span class="line">                .andExpect(MockMvcResultMatchers.status().isOk())</span><br><span class="line">                .andExpect(jsonPath(<span class="string">"$.status"</span>).value(<span class="string">"200"</span>));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="好用的Java类库"><a href="#好用的Java类库" class="headerlink" title="好用的Java类库"></a><font color="#159957">好用的Java类库</font></h1><h3 id="Guava"><a href="#Guava" class="headerlink" title="Guava"></a><font color="#159957">Guava</font></h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> com.google.common.collect.Lists;</span><br><span class="line"><span class="keyword">import</span> com.google.common.collect.Maps;</span><br><span class="line"></span><br><span class="line"><span class="comment">//使用Guava创建集合</span></span><br><span class="line">ArrayList&lt;Student&gt; students = Lists.newArrayList();</span><br><span class="line">ArrayList&lt;String&gt; strings = Lists.newArrayList(<span class="string">"a"</span>, <span class="string">"b"</span>);</span><br><span class="line">HashMap&lt;Object, Object&gt; hashMap = Maps.newHashMap();</span><br></pre></td></tr></table></figure>
+<h3 id="Lombok"><a href="#Lombok" class="headerlink" title="Lombok"></a><font color="#159957">Lombok</font></h3><p>使用@Data代替get(),set()方法，@ToString生成类的toString()方法，@Builder可以快速使用构建模式，等等。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="meta">@ToString</span></span><br><span class="line"><span class="meta">@Builder</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Student</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> Integer no;</span><br><span class="line">    <span class="keyword">private</span> Integer age;</span><br><span class="line">    <span class="keyword">private</span> String sex;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Student</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="FastJson"><a href="#FastJson" class="headerlink" title="FastJson"></a><font color="#159957">FastJson</font></h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//List和String互转</span></span><br><span class="line">String string = JSON.toJSONString(Lists.newArrayList(<span class="string">"a"</span>, <span class="string">"b"</span>));</span><br><span class="line">List&lt;String&gt; list = JSON.parseArray(string, String.class);</span><br></pre></td></tr></table></figure>
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a><font color="#159957">其他</font></h3><p>使用@RestController代替@ResponseBody + @Controller；使用@PostMapping代替@RequestMapping(method = RequestMethod.POST),@GetMapping代替@RequestMapping(method = RequestMethod.GET)等</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//返回空List</span></span><br><span class="line">List&lt;Object&gt; objects = java.util.Collections.emptyList();</span><br><span class="line"><span class="comment">//判断List是否为空</span></span><br><span class="line">org.springframework.util.CollectionUtils.isEmpty(Lists.newArrayList());</span><br></pre></td></tr></table></figure>
+<h1 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a><font color="#159957">Linux</font></h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#动态查看50行日志</span></span><br><span class="line">tail -fn 50 test.log</span><br><span class="line"><span class="comment"># 查看时间段日志</span></span><br><span class="line">sed -n <span class="string">'/2018-07-28 23:30:00/,/2018-07-28 23:30:00/p'</span> test.log</span><br><span class="line"><span class="comment"># grep同时满足多个条件</span></span><br><span class="line">grep <span class="string">"word1"</span> test.log | grep <span class="string">"word2"</span></span><br><span class="line"><span class="comment"># 当用grep搜线程号时，除了显示包含线程号的那一列之外，并显示该列之前后的内容。</span></span><br><span class="line">grep -C 5 <span class="string">"threadNo"</span> test.log</span><br><span class="line"><span class="comment"># 日志文件不大时，用vim命令查看，输入以/为开头的命令，n查找下一个，N查找上一个</span></span><br><span class="line"><span class="comment"># 远程调用json格式的post请求</span></span><br><span class="line">curl -l -H <span class="string">"Content-type: application/json"</span> -X POST -d <span class="string">'&#123;"name":"test","password":"test"&#125;'</span> http://127.0.0.1:8080/<span class="built_in">test</span></span><br><span class="line"><span class="comment"># 下载日志文件到本地(send),上传是rz(receive)</span></span><br><span class="line">yum install -y lrzsz <span class="comment">#先安装</span></span><br><span class="line">sz test.log</span><br><span class="line"><span class="comment"># less查看命令</span></span><br><span class="line"><span class="comment"># G移到最后一行，使用？匹配前一个文本，n向后查询，N向前查询，用/匹配时相反</span></span><br><span class="line"><span class="comment"># ctrl+F 向前移动一屏，ctrl+B向后移动一屏，j向下移动一行，k向上移动一行，space向下翻一页，b向上翻一页</span></span><br><span class="line">less test.log</span><br></pre></td></tr></table></figure>
+<h1 id="其他-1"><a href="#其他-1" class="headerlink" title="其他"></a><font color="#159957">其他</font></h1><ol>
+<li>IDEA Live Templates</li>
+</ol>
+<ul>
+<li><p>进入Live Templates菜单，新建模板：<br><img src="/images/article_pictures/idea_live_template.jpeg" alt=""></p>
+</li>
+<li><p>在代码中输入my_logger等快捷输出代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> org.slf4j.Logger;</span><br><span class="line"><span class="keyword">import</span> org.slf4j.LoggerFactory;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span></span>&#123;</span><br><span class="line">    <span class="comment">//my_logger</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Logger LOGGER = LoggerFactory.getLogger(Test.class);</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="comment">//my_logger_info_json</span></span><br><span class="line">        String str = <span class="keyword">null</span>;</span><br><span class="line">        LOGGER.info(<span class="string">"Test_test_str:&#123;&#125;"</span>,JSON.toJSONString(str));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Java-8/" rel="tag"># Java 8</a>
+          
+            <a href="/tags/Spring/" rel="tag"># Spring</a>
+          
+            <a href="/tags/Mock/" rel="tag"># Mock</a>
+          
+            <a href="/tags/Guava/" rel="tag"># Guava</a>
+          
+            <a href="/tags/Lombok/" rel="tag"># Lombok</a>
+          
+            <a href="/tags/FastJson/" rel="tag"># FastJson</a>
+          
+            <a href="/tags/Linux/" rel="tag"># Linux</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/05/06/IDEA/" rel="next" title="IntelliJ IDEA 使用技巧">
+                <i class="fa fa-chevron-left"></i> IntelliJ IDEA 使用技巧
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/08/13/a-code-review/" rel="prev" title="记一次收获颇多的Code Review">
+                记一次收获颇多的Code Review <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zMjk5NS85NTU3"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Bran Zuo</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Java-8"><span class="nav-number">1.</span> <span class="nav-text">Java 8</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Stream"><span class="nav-number">1.0.1.</span> <span class="nav-text">Stream</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Lamda"><span class="nav-number">1.0.2.</span> <span class="nav-text">Lamda</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CompletableFuture"><span class="nav-number">1.0.3.</span> <span class="nav-text">CompletableFuture</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Optional"><span class="nav-number">1.0.4.</span> <span class="nav-text">Optional</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Spring-定时任务"><span class="nav-number">2.</span> <span class="nav-text">Spring 定时任务</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Mock单元测试"><span class="nav-number">3.</span> <span class="nav-text">Mock单元测试</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#好用的Java类库"><span class="nav-number">4.</span> <span class="nav-text">好用的Java类库</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Guava"><span class="nav-number">4.0.1.</span> <span class="nav-text">Guava</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Lombok"><span class="nav-number">4.0.2.</span> <span class="nav-text">Lombok</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#FastJson"><span class="nav-number">4.0.3.</span> <span class="nav-text">FastJson</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他"><span class="nav-number">4.0.4.</span> <span class="nav-text">其他</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Linux"><span class="nav-number">5.</span> <span class="nav-text">Linux</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#其他-1"><span class="nav-number">6.</span> <span class="nav-text">其他</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Bran Zuo</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
