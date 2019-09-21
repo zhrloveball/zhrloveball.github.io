@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/myicon_180.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/myicon_32.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/myicon_16.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/myicon_512.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Java IO," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="主要学习File类与RandomAccessFile类。File类是在java.io包中唯一与文件本身有关的，RandomAccessFile类实现了对文件内容的随机读取。">
+<meta name="keywords" content="Java IO">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java流与文件学习笔记(四)：Java文件">
+<meta property="og:url" content="http://yoursite.com/2018/01/19/Java_IO_4/index.html">
+<meta property="og:site_name" content="Bran&#39;s Blog">
+<meta property="og:description" content="主要学习File类与RandomAccessFile类。File类是在java.io包中唯一与文件本身有关的，RandomAccessFile类实现了对文件内容的随机读取。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-09-21T02:26:42.846Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java流与文件学习笔记(四)：Java文件">
+<meta name="twitter:description" content="主要学习File类与RandomAccessFile类。File类是在java.io包中唯一与文件本身有关的，RandomAccessFile类实现了对文件内容的随机读取。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/01/19/Java_IO_4/"/>
+
+
+
+
+
+  <title>Java流与文件学习笔记(四)：Java文件 | Bran's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Bran's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">行到水穷处，坐看云起时</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/19/Java_IO_4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bran Zuo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/head.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bran's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Java流与文件学习笔记(四)：Java文件</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-19T21:54:36+08:00">
+                2018-01-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>主要学习File类与RandomAccessFile类。File类是在java.io包中唯一与文件本身有关的，RandomAccessFile类实现了对文件内容的随机读取。</p>
+<a id="more"></a>
+<h2 id="Java文件"><a href="#Java文件" class="headerlink" title="Java文件"></a><font color="#159957">Java文件</font></h2><h3 id="File类"><a href="#File类" class="headerlink" title="File类"></a><font color="#159957">File类</font></h3><ul>
+<li>File类在整个java.io包中是一个独立的类，此类的主要功能是完成与平台无关文件操作。</li>
+<li>在windows和linux中路径分隔符不同，故用<strong>File.separator</strong>进行分割，如”F:”+File.separator+”demo.txt”</li>
+<li>方法摘要<ul>
+<li>创建文件：file.createNewFile();</li>
+<li>删除文件：file.delete();</li>
+<li>判断文件是否存在：file.exists();</li>
+<li>列出目录下的文件或文件夹名称：file.list();</li>
+<li>列出满足指定过滤器的文件和目录：file.list(FilenameFilter filter) ;</li>
+<li>列出全部的子文件或文件夹：file.listFiles();</li>
+<li>创建目录：file.mkdir();</li>
+<li>重命名文件：file.renameTo(File dest)；</li>
+</ul>
+</li>
+<li>示例</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 列出txt文件</span></span><br><span class="line"><span class="comment">* <span class="doctag">@param</span> strPath 目标路径</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> String[] filteFileName(String strPath) &#123;</span><br><span class="line">	File srcFile = <span class="keyword">new</span> File(strPath);</span><br><span class="line">	String[] fileStrs = srcFile.list(<span class="keyword">new</span> FilenameFilter() &#123;</span><br><span class="line">		<span class="meta">@Override</span></span><br><span class="line">		<span class="comment">//重写过滤规则，dir：被找到的文件所在的目录。name：文件的名称。 </span></span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">accept</span><span class="params">(File dir, String name)</span> </span>&#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">new</span> File(dir,name).isFile() &amp;&amp; name.endsWith(<span class="string">"txt"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;);</span><br><span class="line">	<span class="keyword">return</span> fileStrs;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 重命名文件</span></span><br><span class="line"><span class="comment">* <span class="doctag">@param</span> strPath 目标路径</span></span><br><span class="line"><span class="comment">* <span class="doctag">@param</span> pattern 新的文件后缀</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">renameFile</span><span class="params">(String strPath,String pattern)</span> </span>&#123;</span><br><span class="line">	File srcFloder = <span class="keyword">new</span> File(strPath);</span><br><span class="line">	File[] files = srcFloder.listFiles();</span><br><span class="line">	<span class="keyword">for</span> (File file : files) &#123;</span><br><span class="line">		String fileName = file.getName();</span><br><span class="line">        <span class="keyword">int</span> index = fileName.lastIndexOf(<span class="string">"."</span>);</span><br><span class="line">        String prefix = fileName.substring(<span class="number">0</span>,index + <span class="number">1</span>);</span><br><span class="line">        File newFile = <span class="keyword">new</span> File(file.getParent() + File.separator + prefix + pattern);</span><br><span class="line">        file.renameTo(newFile);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="RandomAccessFile类"><a href="#RandomAccessFile类" class="headerlink" title="RandomAccessFile类"></a><font color="#159957">RandomAccessFile类</font></h3><ul>
+<li>由于可以自由访问文件的任意位置，所以如果需要访问文件的部分内容，RandomAccessFile将是更好的选择。</li>
+<li>它的父类是Object，没有继承字节流、字符流家族中任何一个类。并且它实现了DataInput、DataOutput这两个接口，既可以读也可以写。</li>
+<li>重要方法：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//返回文件记录指针的当前位置</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">native</span> <span class="keyword">long</span> <span class="title">getFilePointer</span><span class="params">()</span> <span class="keyword">throws</span> IOException</span>;</span><br><span class="line"><span class="comment">//将文件记录指针定位到pos的位置</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">native</span> <span class="keyword">void</span> <span class="title">seek</span><span class="params">(<span class="keyword">long</span> pos)</span> <span class="keyword">throws</span> IOException</span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>示例：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException</span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">try</span> (</span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">            "r"   以只读方式打开。调用结果对象的任何 write 方法都将导致抛出 IOException。</span></span><br><span class="line"><span class="comment">            "rw"  打开以便读取和写入。如果该文件尚不存在，则尝试创建该文件。</span></span><br><span class="line"><span class="comment">            "rws" 打开以便读取和写入，对于 "rw"，还要求对文件的内容或元数据的每个更新都同步写入到底层存储设备。</span></span><br><span class="line"><span class="comment">            "rwd" 打开以便读取和写入，对于 "rw"，还要求对文件内容的每个更新都同步写入到底层存储设备。</span></span><br><span class="line"><span class="comment">        */</span></span><br><span class="line">        RandomAccessFile raf = <span class="keyword">new</span> RandomAccessFile(<span class="string">"F:"</span> + File.separator + <span class="string">"test.txt"</span>,<span class="string">"rw"</span>)<span class="comment">//文件内容：helloworld</span></span><br><span class="line">    ) &#123;</span><br><span class="line">        System.out.println(<span class="string">"RandomAccessFile文件指针的初始位置:"</span>+raf.getFilePointer());</span><br><span class="line">        <span class="comment">//结果：RandomAccessFile文件指针的初始位置:0</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//功能一：读取任意位置的数据</span></span><br><span class="line">        raf.seek(<span class="number">5</span>);</span><br><span class="line">        <span class="keyword">byte</span>[] bytes = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">1024</span>];</span><br><span class="line">        <span class="comment">//用于保存实际读取的字节数</span></span><br><span class="line">        <span class="keyword">int</span> len;</span><br><span class="line">        <span class="comment">//循环读取</span></span><br><span class="line">        <span class="keyword">while</span>((len=raf.read(bytes))&gt;<span class="number">0</span>)&#123;</span><br><span class="line">            <span class="comment">//打印读取的内容,并将字节转为字符串输入</span></span><br><span class="line">            System.out.println(<span class="keyword">new</span> String(bytes,<span class="number">0</span>,len));</span><br><span class="line">            <span class="comment">//结果：world</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//功能二：追加数据</span></span><br><span class="line">        raf.seek(raf.length());<span class="comment">//将记录指针移动到文件最后</span></span><br><span class="line">        raf.write(<span class="string">"追加的数据"</span>.getBytes());</span><br><span class="line"></span><br><span class="line">        <span class="comment">//功能三：任意位置插入数据</span></span><br><span class="line">        File tmp=File.createTempFile(<span class="string">"test"</span>, <span class="string">".tmp"</span>); <span class="comment">//创建一个临时文件夹来保存插入点后的数据</span></span><br><span class="line">        tmp.deleteOnExit();<span class="comment">//在JVM退出时删除</span></span><br><span class="line">        FileOutputStream tmpOut = <span class="keyword">new</span> FileOutputStream(tmp);</span><br><span class="line">        FileInputStream tmpIn = <span class="keyword">new</span> FileInputStream(tmp);</span><br><span class="line"></span><br><span class="line">        raf.seek(<span class="number">5</span>);</span><br><span class="line">        <span class="keyword">byte</span>[] buff = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">1024</span>];</span><br><span class="line">        <span class="keyword">int</span> hasRead;</span><br><span class="line">        <span class="keyword">while</span>((hasRead=raf.read(buff))&gt;<span class="number">0</span>)&#123;</span><br><span class="line">            tmpOut.write(buff,<span class="number">0</span>,hasRead);<span class="comment">//将插入点后的内容读入临时文件</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        raf.seek(<span class="number">5</span>);<span class="comment">//返回原来的插入处</span></span><br><span class="line">        raf.write(<span class="string">"插入的数据"</span>.getBytes());<span class="comment">//插入需要插入的内容</span></span><br><span class="line">        <span class="keyword">while</span>((hasRead=tmpIn.read(buff))&gt;<span class="number">0</span>)&#123;  <span class="comment">//最后追加临时文件中的内容</span></span><br><span class="line">            raf.write(buff,<span class="number">0</span>,hasRead);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//初始文件内容：helloworld</span></span><br><span class="line">        <span class="comment">//执行后文件内容：hello插入的数据world追加的数据</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a><font color="#159957">参考资料</font></h2><ul>
+<li><a href="http://wangkuiwu.github.io/2012/05/01/index/" target="_blank" rel="noopener">http://wangkuiwu.github.io/2012/05/01/index/</a></li>
+<li><a href="http://www.cnblogs.com/baixl/p/4170599.html" target="_blank" rel="noopener">http://www.cnblogs.com/baixl/p/4170599.html</a></li>
+<li>《Java 核心技术 卷2》</li>
+<li>《Java 语言程序设计 基础篇》</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Java-IO/" rel="tag"># Java IO</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/01/17/Java_IO_3/" rel="next" title="Java流与文件学习笔记(三)：处理流">
+                <i class="fa fa-chevron-left"></i> Java流与文件学习笔记(三)：处理流
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/01/23/Java_IO_5/" rel="prev" title="Java流与文件学习笔记(五)：NIO简介">
+                Java流与文件学习笔记(五)：NIO简介 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zMjk5NS85NTU3"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/head.jpg"
+                alt="Bran Zuo" />
+            
+              <p class="site-author-name" itemprop="name">Bran Zuo</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Java文件"><span class="nav-number">1.</span> <span class="nav-text">Java文件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#File类"><span class="nav-number">1.1.</span> <span class="nav-text">File类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RandomAccessFile类"><span class="nav-number">1.2.</span> <span class="nav-text">RandomAccessFile类</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考资料"><span class="nav-number">2.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Bran Zuo</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

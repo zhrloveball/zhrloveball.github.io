@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/myicon_180.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/myicon_32.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/myicon_16.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/myicon_512.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Linux," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="学习打包命令tar及常用解压缩命令。">
+<meta name="keywords" content="Linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux常用命令(三)：文件打包与解压缩">
+<meta property="og:url" content="http://yoursite.com/2018/01/28/Linux_3/index.html">
+<meta property="og:site_name" content="Bran&#39;s Blog">
+<meta property="og:description" content="学习打包命令tar及常用解压缩命令。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-09-21T02:26:42.847Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Linux常用命令(三)：文件打包与解压缩">
+<meta name="twitter:description" content="学习打包命令tar及常用解压缩命令。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/01/28/Linux_3/"/>
+
+
+
+
+
+  <title>Linux常用命令(三)：文件打包与解压缩 | Bran's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Bran's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">行到水穷处，坐看云起时</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/28/Linux_3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bran Zuo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/head.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bran's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Linux常用命令(三)：文件打包与解压缩</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-28T20:15:07+08:00">
+                2018-01-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>学习打包命令tar及常用解压缩命令。</p>
+<a id="more"></a>
+<h3 id="tar"><a href="#tar" class="headerlink" title="tar"></a><font color="#159957">tar</font></h3><h4 id="归档"><a href="#归档" class="headerlink" title="归档"></a>归档</h4><p>归档就是将多个文件打包为单个文件以便于管理，默认的归档不会执行压缩。</p>
+<h4 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h4><ul>
+<li>创建归档 <code>-c</code> : 显示指令执行过程: <code>tar -cvf /tmp/test/mylog.tar /tmp/test/*.log</code> <ul>
+<li><code>-f</code> : 指定备份文件，需放在参数最右侧</li>
+<li><code>-v</code> : 显示操作过程</li>
+</ul>
+</li>
+<li>展开归档 <code>-x</code> : <code>tar -xvf mylog.tar</code> </li>
+<li>展开归档至指定文件中 <code>-C</code> : <code>tar -xvf mylog.tar -C /tmp/newtest</code></li>
+<li>查看归档 <code>-t</code> : <code>tar -tf mylog.tar</code></li>
+<li><code>-z</code> 或 <code>--gzip</code> 或 <code>--ungzip</code> ：通过gzip指令处理备份文件<ul>
+<li>打包后，以 gzip 压缩 : <code>tar -zcvf log.tar.gz log2012.log</code></li>
+</ul>
+</li>
+<li><code>-j</code> ：支持bzip2解压文件。<ul>
+<li>打包后，以 bzip2 压缩 : <code>tar -jcvf log.tar.bz2 log2012.log</code></li>
+</ul>
+</li>
+<li><code>-Z</code> 或 <code>--compress</code> 或 <code>--uncompress</code> ：通过compress指令处理备份文件</li>
+</ul>
+<h4 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h4><ul>
+<li>多个选项可以合并，但 <code>-f</code> 由于要带参数，因此要放到最右侧 如：<code>-cf</code> , <code>-xf</code></li>
+<li>选项的引导符 <code>-</code> 可省略。如： <code>tar xvf</code></li>
+</ul>
+<h3 id="解压缩命令"><a href="#解压缩命令" class="headerlink" title="解压缩命令"></a><font color="#159957">解压缩命令</font></h3><ul>
+<li>gzip/gunzip：其对应的是 .gz 结尾的压缩格式文件</li>
+<li>bzip2/bunzip2：其对应的是 .bz2 结尾的压缩格式文件</li>
+<li>xz/unxz： 其对应的是 .xz 结尾的压缩格式文件</li>
+<li>zip/unzip：其对应的是 .zip 结尾的压缩格式文件</li>
+<li>compress/uncompress：对应 .Z 结尾的压缩格式文件</li>
+</ul>
+<h4 id="gzip-gunzip"><a href="#gzip-gunzip" class="headerlink" title="gzip/gunzip"></a><font color="#159957">gzip/gunzip</font></h4><ul>
+<li>压缩:gzip<ul>
+<li>常用选项<ul>
+<li><code>-d</code> ：解压缩，相当于gunzip</li>
+<li><code>-c</code> ：将压缩或解压缩的结果输出至标准输出: <code>gzip -c FILE &gt; /PATH/TP/SOMEFILE.gz</code></li>
+<li><code>-#</code> ：1-9，指定压缩比，值越大压缩比越大  如： <code>gzip -9 m</code></li>
+<li><code>-v</code> ：显示详情</li>
+</ul>
+</li>
+<li>示例<ul>
+<li>压缩，删除原文件，保留压缩后以.gz结尾的文件 <code>gzip /tmp/test/messages</code></li>
+<li>解压缩 <code>gzip -d /tmp/test/messages.gz</code></li>
+<li>压缩到至标准输出 <code>gzip -c /tmp/test/messages &gt; /tmp/test/messages.gz</code></li>
+<li>解压缩到标准输出 <code>gzip -d -c /tmp/test/messages.gz &gt; /tmp/test/messages</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>解压缩:gunzip<ul>
+<li>示例<ul>
+<li>解压缩，原来的压缩文件被删除，保留解压缩后的文件 <code>gunzip /tmp/test/messages.gz</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="bzip2-bunzip2"><a href="#bzip2-bunzip2" class="headerlink" title="bzip2/bunzip2"></a><font color="#159957">bzip2/bunzip2</font></h4><p>bzip2和gzip命令的使用方式基本相同，压缩或解压缩后都会删除源文件。</p>
+<ul>
+<li>bzip2<ul>
+<li>常用选项<ul>
+<li><code>-k</code> ：keep, 保留原文件 <code>bzip2 -k /tmp/test/messages</code></li>
+<li><code>-v</code> : 解压缩文件时，显示详细的信息</li>
+<li><code>-#</code> ：1-9，压缩比，默认为6</li>
+<li><code>-d</code> ：解压缩</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>bunzip2命令解压缩由bzip2指令创建的”.bz2”压缩包。</p>
+<ul>
+<li>bunzip2<ul>
+<li>常用选项<ul>
+<li><code>-k</code> : 保留原文件</li>
+<li><code>-v</code> : 解压缩文件时，显示详细的信息</li>
+<li><code>-#</code> ：1-9，压缩比，默认为6</li>
+</ul>
+</li>
+<li>示例<ul>
+<li>将/opt目录下的etc.zip、var.zip和backup.zip进行压缩，设置压缩率为最高，同时在压缩完毕后不删除原始文件，显示压缩过程的详细信息。 <code>bzip2 -9vk /opt/etc.zip /opt/var.zip /opt/backup.zip</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="xz-unxz"><a href="#xz-unxz" class="headerlink" title="xz/unxz"></a><font color="#159957">xz/unxz</font></h4><ul>
+<li>xz<ul>
+<li>常用选项<ul>
+<li><code>-k</code> ：keep, 保留原文件 <code>xz -k /tmp/test/messages</code></li>
+<li><code>-d</code> ：解压缩</li>
+<li><code>-#</code> ：1-9，压缩比，默认为6</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="compress-uncompress"><a href="#compress-uncompress" class="headerlink" title="compress/uncompress"></a><font color="#159957">compress/uncompress</font></h4><p>compress是个历史悠久的压缩程序，文件经它压缩后，其名称后面会多出”.Z”的扩展名。当要解压缩时，可执行uncompress指令。</p>
+<ul>
+<li>compress<ul>
+<li>常用选项<ul>
+<li><code>-r</code>：递归处理</li>
+<li><code>-d</code>: 解压缩</li>
+<li><code>-v</code>：显示指令执行过程</li>
+<li><code>-c</code>：将结果送到标准输出，无文件被改变</li>
+</ul>
+</li>
+<li>示例<ul>
+<li>解压缩 <code>compress -d man.config.Z</code></li>
+<li>将 man.config 压缩成另外一个文件来备份 <code>compress -c man.config &gt; man.config.back.Z</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="zip-unzip"><a href="#zip-unzip" class="headerlink" title="zip/unzip"></a><font color="#159957">zip/unzip</font></h4><p>zip命令可以用来解压缩文件，或者对文件进行打包操作。</p>
+<ul>
+<li>zip<ul>
+<li>常用选项<ul>
+<li><code>-q</code>: 不显示指令执行过程</li>
+<li><code>-r</code>: 递归处理，将指定目录下的所有文件和子目录一并处理</li>
+</ul>
+</li>
+<li>示例<ul>
+<li>将/home/Blinux/html/这个目录下所有文件和文件夹打包为当前目录下的html.zip： <code>zip -q -r html.zip /home/Blinux/html</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>unzip命令用于解压缩由zip命令压缩的“.zip”压缩包。</p>
+<ul>
+<li>unzip<ul>
+<li>常用选项<ul>
+<li><code>-d&lt;目录&gt;</code> ：指定文件解压缩后所要存储的目录</li>
+<li><code>-n</code> : 解压缩时不要覆盖原有的文件 <code>unzip -n test.zip -d /tmp</code></li>
+<li><code>-o</code> : 不必先询问用户，unzip执行后覆盖原有的文件 <code>unzip -o test.zip -d tmp/</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a><font color="#159957">参考文档</font></h3><p><a href="http://blog.51cto.com/1992tao/1899605" target="_blank" rel="noopener">http://blog.51cto.com/1992tao/1899605</a><br><a href="http://man.linuxde.net/" target="_blank" rel="noopener">http://man.linuxde.net/</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Linux/" rel="tag"># Linux</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/01/27/Linux_2/" rel="next" title="Linux常用命令(二)：文件基本操作">
+                <i class="fa fa-chevron-left"></i> Linux常用命令(二)：文件基本操作
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/01/29/Linux_4/" rel="prev" title="Linux常用命令(四)：文件传输命令ftp">
+                Linux常用命令(四)：文件传输命令ftp <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zMjk5NS85NTU3"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/head.jpg"
+                alt="Bran Zuo" />
+            
+              <p class="site-author-name" itemprop="name">Bran Zuo</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#tar"><span class="nav-number">1.</span> <span class="nav-text">tar</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#归档"><span class="nav-number">1.1.</span> <span class="nav-text">归档</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#语法"><span class="nav-number">1.2.</span> <span class="nav-text">语法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#注意"><span class="nav-number">1.3.</span> <span class="nav-text">注意</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解压缩命令"><span class="nav-number">2.</span> <span class="nav-text">解压缩命令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#gzip-gunzip"><span class="nav-number">2.1.</span> <span class="nav-text">gzip/gunzip</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#bzip2-bunzip2"><span class="nav-number">2.2.</span> <span class="nav-text">bzip2/bunzip2</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#xz-unxz"><span class="nav-number">2.3.</span> <span class="nav-text">xz/unxz</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#compress-uncompress"><span class="nav-number">2.4.</span> <span class="nav-text">compress/uncompress</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#zip-unzip"><span class="nav-number">2.5.</span> <span class="nav-text">zip/unzip</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考文档"><span class="nav-number">3.</span> <span class="nav-text">参考文档</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Bran Zuo</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
