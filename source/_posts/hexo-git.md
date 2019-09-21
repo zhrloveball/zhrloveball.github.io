@@ -18,6 +18,11 @@ categories:
 
  由于主题文件夹``hexo-theme-next``是从github clone的，属于子模块，因此无法提交。我们需另外备份主题的 config.yml 文件，如果自定义部分比较复杂，就需要 fork 一份。参考 https://github.com/iissnan/hexo-theme-next/issues/328
 
+换了电脑之后的步骤：
+1. 因为 Hexo 是基于 NodeJS，所以要先安装 Node
+2. 把备份的 hexo 分支 clone 到新电脑，并执行 ``npm install hexo, npm install, npm install hexo-deployer-git``
+3. 重新 [clone next主题](https://theme-next.iissnan.com/getting-started.html)，并使用备份的主题配置文件
+
 
 ### <font color = "#159957">20181223更新，Mac下报错 xcrun: error: invalid active developer path</font>
 
